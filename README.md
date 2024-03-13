@@ -1,3 +1,3 @@
-## Assist Shared Class Library
-- This Library is used for Shared Common Reused Items within the Assist Client & Other Programs.
-- Apart of the [Assist Client](https://assistval.com) | [Repository](https://github.com/HeyM1ke/Assist)
+# If you're a user, you're probably looking for the [Assist application](https://assistval.com)
+# Assist Shared Class Library
+This library contains code and components used within the [Assist Client](https://github.com/HeyM1ke/Assist) & other programs.
