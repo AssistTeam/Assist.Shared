@@ -16,7 +16,8 @@ public sealed partial class AccountSettings : ViewModelBase
     public static AccountSettings Default { get; set; }
     public static readonly string BaseFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AssistData", "Accounts");
     public static readonly string FilePath = Path.Combine(BaseFolderPath, "AccountSettings.json"); // Note: This file does not have a debug version, this is to share Riot accounts across different testing cycles.
-
+    [ObservableProperty] private List<AccountProfile> _accounts = new List<AccountProfile>();
+    [ObservableProperty] private string _defaultAccount;
     
     static AccountSettings()
     {
@@ -26,6 +27,7 @@ public sealed partial class AccountSettings : ViewModelBase
     public static void Save()
     {
         if (Default == null) return;
+        if (Default.Accounts.Count < 0) return; // DO not save file if there is not an account.
         File.WriteAllText(FilePath, JsonSerializer.Serialize(Default, new JsonSerializerOptions() { WriteIndented = true }), Encoding.UTF8);
     }
 
@@ -33,10 +35,7 @@ public sealed partial class AccountSettings : ViewModelBase
     {
         if (File.Exists(FilePath)) File.Delete(FilePath);
     }
-
-    [ObservableProperty] private List<AccountProfile> _accounts = new List<AccountProfile>();
-    [ObservableProperty] private string _defaultAccount;
-
+    
     public async Task UpdateAccount(AccountProfile accountProfile)
     {
         var itemIndex = Accounts.FindIndex(x => x.Id == accountProfile.Id);
