@@ -18,6 +18,8 @@ public sealed partial class AssistSettings : ViewModelBase
 
     public static readonly string FolderPath =
         Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AssistData");
+    public static readonly string CacheFolderPath =
+        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AssistData", "Images", "Cache" );
 
 #if DEBUG
     public static readonly string FilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AssistData", "AssistSettings_Debug.json");
