@@ -162,7 +162,7 @@ public class MotionCat
         }
         return string.Empty;
     }
-    public static string GetMotherboardId()
+    static string GetMotherboardId()
     {
         using (ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT SerialNumber FROM Win32_BaseBoard"))
         {
